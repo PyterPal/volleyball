@@ -1,0 +1,33 @@
+mat-sidenav {
+  width: 250px;
+}
+
+.nav {
+  justify-content: space-between;
+
+  .logo {
+    height: 100%;
+    padding: 12px;
+  }
+
+  .desktop-nav-list {
+    display: flex;
+    gap: 10px;
+
+    .mdc-list-item {
+      overflow: unset;
+    }
+  }
+}
+
+.active {
+  background-color: #ddd;
+}
+
+.hidden {
+  display: none;
+}
+
+mat-sidenav-content {
+  background-image: url("../assets/images/bg.jpg");
+}

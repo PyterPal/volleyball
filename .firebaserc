@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "volleyball-3dc27"
+  },
+  "targets": {
+    "volleyball-3dc27": {
+      "hosting": {
+        "volleyball": [
+          "volleyball-3dc27"
+        ]
+      }
+    }
+  }
+}

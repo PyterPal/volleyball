@@ -1,0 +1,50 @@
+<mat-card>
+  <form [formGroup]="editForm" (ngSubmit)="onEdit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Helyszín</mat-label>
+      <input matInput formControlName="place" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Dátum</mat-label>
+      <input
+        matInput
+        formControlName="date"
+        [matDatepicker]="picker"
+        placeholder="HH/NN/ÉÉÉÉ"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="versus">
+      <mat-form-field appearance="fill">
+        <mat-label>Hazai</mat-label>
+        <input matInput formControlName="teamHome" />
+      </mat-form-field>
+      <div class="vs"><img src="../../assets/images/vs.png" alt="" /></div>
+      <mat-form-field appearance="fill">
+        <mat-label>Vendég</mat-label>
+        <input matInput formControlName="teamAway" />
+      </mat-form-field>
+    </div>
+    <div class="action-buttons">
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onDelete()"
+        [disabled]="editInProgress"
+      >
+        <span *ngIf="!editInProgress">Törlés</span>
+        <mat-spinner *ngIf="editInProgress" [diameter]="22"></mat-spinner>
+      </button>
+      <button mat-raised-button color="primary" [disabled]="editInProgress">
+        <span *ngIf="!editInProgress">Mentés</span>
+        <mat-spinner *ngIf="editInProgress" [diameter]="22"></mat-spinner>
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title
+    ><img src="../../assets/images/trophy.png" alt="" />Összes bajnokság
+  </mat-card-title>
+  <app-list-tournament [tournaments]="tournaments"> </app-list-tournament>
+</mat-card>
+<mat-card *ngIf="this.isLoggedIn$ | async">
+  <mat-card-title
+    ><img src="../../assets/images/note.png" alt="" />Saját
+    bajnokságok</mat-card-title
+  >
+  <mat-card-subtitle>Kattints a módosítandó bajnokságra</mat-card-subtitle>
+  <app-list-tournament
+    *ngIf="userTournaments?.length; else noTournaments"
+    [tournaments]="userTournaments"
+    [hover]="true"
+    (selectedTournament)="editTournament($event)"
+  >
+  </app-list-tournament>
+  <ng-template #noTournaments>
+    <mat-card-subtitle>Nincs saját bajnokságod...</mat-card-subtitle>
+  </ng-template>
+</mat-card>
+<mat-card *ngIf="upcomingTournament">
+  <mat-card-title
+    ><img src="../../assets/images/clock.png" alt="" />Következő
+    bajnokság</mat-card-title
+  >
+  <app-list-tournament
+    *ngIf="upcomingTournament"
+    [tournaments]="upcomingTournament"
+  >
+  </app-list-tournament>
+</mat-card>

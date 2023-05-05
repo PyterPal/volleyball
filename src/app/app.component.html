@@ -1,0 +1,108 @@
+<mat-sidenav-container fullscreen hasBackdrop="true">
+  <mat-sidenav mat-sidenav mode="over" #sidenav>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item
+        routerLink="/"
+        [disableRipple]="true"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="sidenav.toggle()"
+      >
+        Bajnokság
+      </mat-list-item>
+      <ng-container *ngIf="!(this.isLoggedIn$ | async)">
+        <mat-list-item
+          routerLink="/regisztracio"
+          [disableRipple]="true"
+          routerLinkActive="active"
+          (click)="sidenav.toggle()"
+        >
+          Regisztráció
+        </mat-list-item>
+        <mat-list-item
+          routerLink="/bejelentkezes"
+          [disableRipple]="true"
+          routerLinkActive="active"
+          (click)="sidenav.toggle()"
+        >
+          Bejelentkezés
+        </mat-list-item>
+      </ng-container>
+      <ng-container *ngIf="this.isLoggedIn$ | async">
+        <mat-list-item
+          routerLink="/uj-bajnoksag"
+          [disableRipple]="true"
+          routerLinkActive="active"
+          (click)="sidenav.toggle()"
+        >
+          Új bajnokság
+        </mat-list-item>
+        <mat-list-item [disableRipple]="true" (click)="logout()">
+          Kilépés
+        </mat-list-item>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="nav">
+      <button
+        mat-icon-button
+        *ngIf="mobile; else desktop"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <ng-template #desktop>
+        <mat-nav-list class="desktop-nav-list">
+          <mat-list-item
+            routerLink="/"
+            [disableRipple]="true"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Bajnokság
+          </mat-list-item>
+          <ng-container *ngIf="!(this.isLoggedIn$ | async)">
+            <mat-list-item
+              routerLink="/regisztracio"
+              [disableRipple]="true"
+              routerLinkActive="active"
+            >
+              Regisztráció
+            </mat-list-item>
+            <mat-list-item
+              routerLink="/bejelentkezes"
+              [disableRipple]="true"
+              routerLinkActive="active"
+            >
+              Bejelentkezés
+            </mat-list-item>
+          </ng-container>
+          <ng-container *ngIf="this.isLoggedIn$ | async">
+            <mat-list-item
+              [disableRipple]="true"
+              routerLink="/uj-bajnoksag"
+              routerLinkActive="active"
+            >
+              Új bajnokság
+            </mat-list-item>
+            <mat-list-item [disableRipple]="true" (click)="logout()">
+              Kilépés
+            </mat-list-item>
+          </ng-container>
+        </mat-nav-list>
+      </ng-template>
+      <a class="logo" routerLink="/">
+        <img src="../../assets/images/logo.png" alt="" />
+      </a>
+    </mat-toolbar>
+    <div [ngStyle]="{ padding: '16px' }">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

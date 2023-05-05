@@ -1,0 +1,16 @@
+mat-card {
+  max-width: 350px;
+  margin-inline: auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+
+    button {
+      margin-top: 16px;
+      width: 70%;
+      margin-inline: auto;
+    }
+  }
+}

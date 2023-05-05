@@ -1,0 +1,32 @@
+mat-card {
+  max-width: 350px;
+  margin-inline: auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+
+      button {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.versus {
+  display: flex;
+
+  mat-form-field {
+    flex: 1;
+  }
+
+  img {
+    margin-top: 10px;
+    width: 40px;
+  }
+}

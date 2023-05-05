@@ -1,0 +1,28 @@
+<mat-card>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email cím</mat-label>
+      <input matInput [formControl]="registerForm.controls.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Jelszó</mat-label>
+      <input
+        matInput
+        type="password"
+        [formControl]="registerForm.controls.password"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Jelszó újra</mat-label>
+      <input
+        matInput
+        type="password"
+        [formControl]="registerForm.controls.rePassword"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="registerInProgress">
+      <span *ngIf="!registerInProgress">Regisztáció</span>
+      <mat-spinner *ngIf="registerInProgress" [diameter]="22"></mat-spinner>
+    </button>
+  </form>
+</mat-card>
